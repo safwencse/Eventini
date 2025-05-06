@@ -1,0 +1,19 @@
+{
+  "name": "ticket",
+  "version": "1.0.0",
+  "main": "ticket.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0",
+    "stripe": "^18.0.0"
+  }
+}

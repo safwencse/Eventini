@@ -1,0 +1,516 @@
+/* ===== VOTRE CODE NAVBAR EXACT ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Titillium Web", sans-serif;
+    
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ============================================= */
+/* Header */
+/* ============================================= */
+
+
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none;
+}
+
+
+
+
+/* Styles de survol spécifiques pour les boutons du header */
+.button-container .btnn-login:hover,
+.button-container .btnn-signup:hover {
+    background-color: #FF6B00;
+    color: white !important;
+    border-color: #FF6B00;
+}                                                                                                                                                                        
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 2px solid white;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+
+
+.btnn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: rgba(255,255,255,0.2);
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+.retirerbtn {
+    background: rgb(255, 9, 9);
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+.btnn:hover {
+    background: white;
+    color: #000;
+}
+
+/* ===== NOUVEAU STYLE POUR LA PAGE ÉVÉNEMENT ===== */
+.event-container {
+    padding: 3rem 0;
+    background-image:url("../../resources/images/NEuip.jpg");
+    min-height: calc(100vh - 70px);
+}
+
+.event-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.event-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.event-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #007BFF, #00A3FF);
+    border-radius: 2px;
+}
+
+.event-content {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.event-media {
+    flex: 1;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.event-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.event-media:hover .event-image {
+    transform: scale(1.03);
+}
+
+.event-meta-top {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center; /* ou 'flex-start' pour les aligner à gauche */
+}
+
+.event-media {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-category, .event-type {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+}
+
+.event-category {
+    background-color: #FF6B00;
+}
+
+.event-type.public {
+    background-color: #28a745;
+}
+
+.event-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.detail-item i {
+    color: #007BFF;
+    width: 20px;
+    text-align: center;
+}
+
+.detail-item a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.detail-item a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.like-btn {
+    background: none;
+    border: 0.5px solid #007BFF;
+    color: #007BFF;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+}
+
+.like-btn:hover {
+    background: rgba(0, 123, 255, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #007BFF, #00A3FF);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to right, #0069d9, #0088ff);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .event-content {
+        flex-direction: column;
+    }
+    
+    .event-title {
+        font-size: 2rem;
+    }
+    
+    .btn-primary {
+        align-self: stretch;
+        text-align: center;
+    }
+}
+/* Ajoutez ces règles à la fin de votre CSS existant */
+.event-card {
+    position: relative; /* Pour positionner event-meta-top */
+}
+
+.event-meta-top {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 10px;
+    z-index: 1;
+}
+
+/* Conservez toutes les autres règles CSS existantes */
+/* Section Tickets - Déjà correct, à conserver tel quel */
+.tickets-section {
+    padding: 3rem 0;
+    background-image:url("../../resources/images/NEuip.jpg");
+    margin-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #007BFF, #00A3FF);
+}
+
+.tickets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Légère augmentation pour mieux contenir le texte */
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.ticket-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.ticket-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    text-transform: capitalize; /* Pour uniformiser l'affichage des types */
+    
+}
+
+.ticket-price {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    color: #007BFF;
+    
+}
+
+.ticket-features {
+    list-style: none;
+    margin: 1.5rem 0;
+    flex-grow: 1; /* Pour une hauteur uniforme */
+}
+
+.ticket-features li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+    line-height: 1.5; /* Meilleure lisibilité */
+}
+
+.ticket-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Styles spécifiques pour chaque type de ticket - À conserver */
+.ticket-card.standard {
+    border-top: 4px solid #007BFF;
+}
+
+.ticket-card.vip {
+    border-top: 4px solid #ff7207;
+}
+
+.ticket-card.backstage {
+    border-top: 4px solid #7fbc1e;
+}
+
+.ticket-card.vip .ticket-price {
+    color: #ff7207;
+}
+
+.ticket-card.backstage .ticket-price {
+    color: #7fbc1e;
+}
+
+/* Message quand aucun ticket */
+.tickets-section > p {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+    .tickets-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Styles pour la section des boutons */
+.event-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Style amélioré pour le bouton de mot de passe */
+.btn-password {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+}
+
+.btn-password:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4);
+}
+
+/* Style amélioré pour la popup */
+.password-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.password-popup input {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin: 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.btn-validate {
+    background: linear-gradient(to right, #28a745, #7fbc1e);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-validate:hover {
+    background: linear-gradient(to right, #218838, #6da71b);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .btn-password,
+    .btn-primary {
+        align-self: stretch;
+        text-align: center;
+    }
+    
+    .password-popup {
+        width: 85%;
+        padding: 1.5rem;
+    }
+}
+.password-success {
+    color: #28a745;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.password-success i {
+    margin-left: 8px;
+    font-size: 1.4rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

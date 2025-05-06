@@ -1,0 +1,383 @@
+/* Add this to your existing styles.css */
+*{
+    font-family: "Titillium Web", sans-serif;
+
+}
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-top: 18px;
+    height: 56px;
+}
+
+.form-group select:focus + label,
+.form-group select:not(:placeholder-shown) + label {
+    transform: translateY(-25px) scale(0.85);
+    color: #ff5900;
+    background: white;
+    padding: 0 5px;
+}
+
+.form-group input[type="file"] {
+    padding: 10px;
+    height: auto;
+}
+
+/* Keep all your existing CSS below this point */
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9f0f5 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Elements */
+.bg-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-shape {
+    position: absolute;
+    opacity: 0.8;
+    animation: float 8s ease-in-out infinite;
+    animation-delay: var(--delay);
+    filter: blur(1px);
+}
+
+.bg-shape.circle {
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: var(--color);
+    left: var(--left);
+    top: var(--top);
+}
+
+.bg-shape.triangle {
+    width: 0;
+    height: 0;
+    border-left: calc(var(--size)/2) solid transparent;
+    border-right: calc(var(--size)/2) solid transparent;
+    border-bottom: var(--size) solid var(--color);
+    left: var(--left);
+    top: var(--top);
+}
+
+.floating-icon {
+    position: absolute;
+    font-size: 1.8rem;
+    opacity: 0.15;
+    animation: floatIcon 15s linear infinite;
+    animation-delay: var(--delay);
+    left: var(--left);
+    top: var(--top);
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(20px, -30px) rotate(5deg); }
+    50% { transform: translate(-15px, 20px) rotate(-5deg); }
+    75% { transform: translate(10px, -20px) rotate(3deg); }
+}
+
+@keyframes floatIcon {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.15; }
+    90% { opacity: 0.15; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Brand Header */
+.brand-header {
+    text-align: center;
+    padding: 2rem 0 1rem;
+}
+
+.logo-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.logo {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #1065ab;
+    margin-bottom: 0.5rem;
+    letter-spacing: 3px;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-highlight {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: rgba(255,89,0,0.3);
+    z-index: 1;
+    border-radius: 50%;
+    animation: highlightPulse 2s infinite alternate;
+}
+
+.tagline {
+    color: #1065ab;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+@keyframes highlightPulse {
+    from { transform: scaleX(0.9); opacity: 0.3; }
+    to { transform: scaleX(1.1); opacity: 0.5; }
+}
+
+/* Form Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.form-holder {
+    position: relative;
+    height: auto;
+    min-height: 500px;
+    width: 100%;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+    transition: all 0.5s ease;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.form-container.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    position: relative;
+}
+
+/* Floating Labels */
+.form-group.floating {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-group.floating label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: #1065ab;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    transform-origin: left center;
+    background: rgba(255,255,255,0.9);
+    padding: 0 5px;
+    border-radius: 3px;
+}
+
+.form-group.floating input:focus + label,
+.form-group.floating input:not(:placeholder-shown) + label {
+    transform: translateY(-25px) scale(0.85);
+    color: #ff5900;
+    background: white;
+    padding: 0 5px;
+}
+
+.form-group.floating input::placeholder {
+    opacity: 0;
+}
+
+.form-group.floating input {
+    padding-top: 18px;
+    height: 56px;
+}
+
+/* Form Elements */
+.form-control {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    border: 2px solid rgba(16, 101, 171, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: #1065ab;
+    box-shadow: 0 0 0 3px rgba(16, 101, 171, 0.2);
+    outline: none;
+}
+
+.password-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #1065ab;
+    cursor: pointer;
+    padding: 0;
+    z-index: 3;
+}
+
+.input-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1065ab;
+    opacity: 0.8;
+    z-index: 2;
+}
+
+/* Active State for Icons */
+.form-group.floating input:focus ~ .input-icon,
+.form-group.floating input:not(:placeholder-shown) ~ .input-icon,
+.form-group.floating input:focus ~ .toggle-password,
+.form-group.floating input:not(:placeholder-shown) ~ .toggle-password,
+.form-group.floating input:focus ~ .toggle-password i,
+.form-group.floating input:not(:placeholder-shown) ~ .toggle-password i {
+    color: #ff5900;
+}
+
+.terms-group {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.terms-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    accent-color: #1065ab;
+}
+
+.terms-group label {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.terms-group a {
+    color: #1065ab;
+    text-decoration: none;
+}
+
+.terms-group a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #1065ab 0%, #0d5490 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(16, 101, 171, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 101, 171, 0.4);
+}
+
+.btn-switch {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.btn-switch strong {
+    color: #1065ab;
+    transition: all 0.3s;
+}
+
+.btn-switch:hover strong {
+    color: #ff5900;
+}
+
+/* Date Input Fix */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    right: 9px;
+    width: 20px;
+    height: 20px;
+    z-index: 99;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logo { font-size: 2.5rem; }
+    .form-container { padding: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    .logo { font-size: 2rem; }
+    .form-container { padding: 1.25rem; }
+    .form-group.floating label {
+        font-size: 0.9rem;
+    }
+    .container {
+        padding: 10px;
+    }
+    .toggle-password {
+        right: 40px;
+    }
+}

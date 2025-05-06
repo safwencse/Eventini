@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Tickets Reservation</title>
+    <link rel="stylesheet" href="ticket.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <header class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">Premium Event Experience</h1>
+            <p class="lead mb-5">Secure your spot at the most anticipated event of the year</p>
+            <button class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                Reserve Now
+            </button>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="fw-bold mb-4">Event Details</h2>
+                <p>Join us for an unforgettable experience featuring world-class performances, gourmet catering, and exclusive networking opportunities.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="bi bi-calendar-event me-2"></i> Saturday, June 15, 2024</li>
+                    <li class="mb-2"><i class="bi bi-clock me-2"></i> 7:00 PM - Midnight</li>
+                    <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Grand Convention Center, New York</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <img src="https://via.placeholder.com/600x400" alt="Event venue" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="reservationModalLabel">Select Your Tickets</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ticket-option mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="fw-bold mb-0">VIP Ticket</h6>
+                            <span class="text-primary fw-bold">$199</span>
+                        </div>
+                        <p class="small text-muted mb-3">Premium seating, exclusive lounge access, and complimentary drinks</p>
+                        <div class="input-group">
+                            <button class="btn btn-outline-secondary decrement" type="button">-</button>
+                            <input type="number" class="form-control text-center ticket-quantity" value="0" min="0" data-price="199" data-type="VIP" data-stripe-price-id="price_1REYOXFbYksDBRZfkKoFT5cb">
+                            <button class="btn btn-outline-secondary increment" type="button">+</button>
+                        </div>
+                    </div>
+
+                    <div class="ticket-option mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="fw-bold mb-0">Standard Ticket</h6>
+                            <span class="text-primary fw-bold">$99</span>
+                        </div>
+                        <p class="small text-muted mb-3">General admission with full event access</p>
+                        <div class="input-group">
+                            <button class="btn btn-outline-secondary decrement" type="button">-</button>
+                            <input type="number" class="form-control text-center ticket-quantity" value="0" min="0" data-price="99" data-type="Standard" data-stripe-price-id="price_1REYOXFbYksDBRZfgjSqx5Ck">
+                            <button class="btn btn-outline-secondary increment" type="button">+</button>
+                        </div>
+                    </div>
+
+                    <div class="ticket-option">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="fw-bold mb-0">Student Ticket</h6>
+                            <span class="text-primary fw-bold">$49</span>
+                        </div>
+                        <p class="small text-muted mb-3">Valid student ID required at entry</p>
+                        <div class="input-group">
+                            <button class="btn btn-outline-secondary decrement" type="button">-</button>
+                            <input type="number" class="form-control text-center ticket-quantity" value="0" min="0" data-price="49" data-type="Student" data-stripe-price-id="price_1REYPMFbYksDBRZf88YjznFz">
+                            <button class="btn btn-outline-secondary increment" type="button">+</button>
+                        </div>
+                    </div>
+
+                    <div class="total-section mt-4 p-3 bg-light rounded">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="fw-bold mb-0">Total:</h6>
+                            <span id="totalAmount" class="fw-bold">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div id="errorMessage" class="alert alert-danger mt-3 d-none" role="alert"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary-custom" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary-custom" id="payButton">
+                        <span id="payButtonText">Pay with Stripe</span>
+                        <span id="payButtonSpinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <div class="mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#a5e83b" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                    </div>
+                    <h4 class="fw-bold mb-3">Payment Successful!</h4>
+                    <p class="mb-4">Your tickets have been reserved. A confirmation email has been sent to you.</p>
+                    <button type="button" class="btn btn-primary-custom" data-bs-dismiss="modal">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="ticket.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const eventId = new URLSearchParams(window.location.search).get('id');
+            if (eventId) {
+                // Fetch ticket details based on event ID
+                fetch(`http://localhost:3000/event-details?id=${eventId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update ticket details on the page
+                        console.log(data);
+                    })
+                    .catch(error => console.error('Error fetching ticket details:', error));
+            }
+        });
+    </script>
+</body>
+</html>

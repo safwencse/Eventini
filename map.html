@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventini - Discover Events</title>
+    <link rel="stylesheet" href="../assests/css/style-map.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Event<span>ini</span></div>
+        <div class="search-container">
+            <input type="text" placeholder="Search events...">
+            <button class="filter-btn">Filters</button>
+        </div>
+        <div class="user-actions">
+            <a href="#">Profile</a>
+            <a href="#">Create Event</a>
+        </div>
+        <button class="menu-toggle">☰</button>
+    </div>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Your Upcoming Events</h2>
+                <button class="close-sidebar">×</button>
+            </div>
+            <div class="event-list">
+                <!-- Events will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div id="map"></div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script src="../assests/js/script_map.js"></script>
+</body>
+</html>
